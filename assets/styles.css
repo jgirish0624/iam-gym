@@ -1,0 +1,167 @@
+:root{
+  --bg:#060e1d;
+  --panel:#0e1728;
+  --muted:#9aa6b2;
+  --accent:#ff6a13;
+  --radius:12px;
+  --ease:cubic-bezier(.2,.9,.2,1);
+  --font:Inter,system-ui,Segoe UI,Roboto,Arial;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:var(--font);background:linear-gradient(180deg,#051022 0%, #0a1122 100%);color:#eaf3fb;scroll-behavior:smooth}
+.wrap{max-width:1100px;margin:0 auto;padding:24px}
+
+/* --- Header --- */
+.site-header{
+  position:sticky;top:0;
+  background:rgba(5,10,20,0.6);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  z-index:50;
+}
+.header-inner{
+  display:flex;justify-content:space-between;align-items:center;
+}
+.brand{color:var(--accent);font-weight:800;text-decoration:none;font-size:20px;letter-spacing:-0.3px}
+.main-nav{
+  display:flex;gap:20px;align-items:center;
+}
+.main-nav a{
+  color:var(--muted);text-decoration:none;font-weight:600;transition:color .3s var(--ease);
+}
+.main-nav a:hover{color:#fff}
+.actions{display:flex;align-items:center;gap:10px}
+.menu-toggle{
+  display:none;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;
+}
+
+/* --- Free badge --- */
+.free-badge{
+  background:linear-gradient(90deg,rgba(255,106,19,0.15),rgba(255,106,19,0.06));
+  color:var(--accent);
+  padding:8px 14px;border-radius:999px;font-weight:700;
+  border:1px solid rgba(255,106,19,0.2);
+  cursor:default;
+  transition:transform .3s var(--ease);
+}
+.free-badge:hover{transform:scale(1.05)}
+
+/* --- Hero --- */
+.hero{
+  padding:70px 0;position:relative;overflow:hidden;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 340px;gap:30px;align-items:center;
+}
+.hero-content h1{
+  font-size:36px;margin:0 0 12px;animation:fadeSlideDown 1s var(--ease);
+}
+.lead{color:var(--muted);margin-bottom:20px;animation:fadeIn 1.3s var(--ease)}
+.hero-cta{display:flex;gap:12px;margin-bottom:14px;animation:fadeUp 1.2s var(--ease)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:12px 18px;border-radius:10px;font-weight:700;text-decoration:none;
+  border:none;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease);
+}
+.btn.primary{
+  background:linear-gradient(90deg,var(--accent),#ff9f4b);
+  color:#050e1d;box-shadow:0 6px 20px rgba(255,106,19,0.25);
+}
+.btn.primary:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 8px 28px rgba(255,106,19,0.35)}
+.btn.ghost{
+  background:transparent;border:1px solid rgba(255,255,255,0.1);
+  color:var(--muted);
+}
+.btn.ghost:hover{color:#fff;border-color:rgba(255,255,255,0.25);transform:translateY(-3px)}
+
+.highlights{
+  list-style:none;padding:0;margin:16px 0 0;display:grid;gap:8px;
+  color:var(--muted);font-size:15px;
+  animation:fadeIn 1.6s var(--ease);
+}
+
+/* --- Trainer card --- */
+.hero-card{
+  position:relative;background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));
+  border-radius:14px;overflow:hidden;padding:20px;text-align:center;
+  animation:floatCard 4s ease-in-out infinite;
+}
+.hero-card img{
+  width:150px;height:150px;border-radius:50%;object-fit:cover;
+  border:5px solid rgba(255,255,255,0.08);
+  animation:fadeIn 1.5s var(--ease);
+}
+.hero-card h3{margin:10px 0 4px}
+.hero-card p{color:var(--muted);font-size:14px;margin:0}
+
+/* --- Features --- */
+.features{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;margin:50px 0;
+}
+.feature{
+  background:rgba(255,255,255,0.03);padding:18px;border-radius:12px;
+  transform:translateY(40px);opacity:0;
+  transition:transform 0.6s var(--ease),opacity 0.6s var(--ease);
+}
+.feature.show{transform:translateY(0);opacity:1;}
+.feature:hover{box-shadow:0 6px 30px rgba(255,106,19,0.1);transform:translateY(-5px);}
+
+/* --- Fees --- */
+.fees{margin:50px 0;text-align:center;}
+.fee-grid{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;}
+.fee-card{flex:1 1 260px;background:rgba(255,255,255,0.04);padding:20px;border-radius:12px;
+  transform:scale(0.95);opacity:0;transition:all 0.7s var(--ease);}
+.fee-card.show{transform:scale(1);opacity:1;}
+.price{font-size:22px;font-weight:800;color:var(--accent);margin:10px 0}
+
+/* --- Timings --- */
+.timings ul{list-style:none;padding:0;color:var(--muted);font-size:15px;}
+
+/* --- Contact --- */
+.contact-form{
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;
+}
+.contact-form input,.contact-form select{
+  flex:1 1 200px;padding:10px;border-radius:10px;border:none;background:rgba(255,255,255,0.05);
+  color:inherit;transition:background .3s var(--ease);
+}
+.contact-form input:focus,.contact-form select:focus{background:rgba(255,255,255,0.1)}
+.contact-form button{padding:10px 14px;border-radius:10px}
+
+/* --- Branches --- */
+.branch-card{
+  background:rgba(255,255,255,0.03);
+  padding:20px;border-radius:12px;
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease);
+}
+.branch-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 8px 24px rgba(255,106,19,0.2);
+}
+
+/* --- Footer --- */
+.site-footer{
+  border-top:1px solid rgba(255,255,255,0.04);
+  margin-top:60px;padding:24px 0;
+}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.footer-nav a{color:var(--muted);margin-left:10px;text-decoration:none;transition:color .3s}
+.footer-nav a:hover{color:#fff}
+
+/* --- Animations --- */
+@keyframes fadeSlideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+/* --- Responsive --- */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:20px;text-align:center;}
+  .main-nav{display:none;flex-direction:column;background:rgba(5,10,20,0.95);position:absolute;left:0;top:70px;width:100%;padding:20px;border-bottom:1px solid rgba(255,255,255,0.05);}
+  .main-nav.show{display:flex;animation:fadeIn .4s var(--ease);}
+  .menu-toggle{display:block;}
+  .features{grid-template-columns:1fr;}
+  .fee-grid{flex-direction:column;align-items:center;}
+}
